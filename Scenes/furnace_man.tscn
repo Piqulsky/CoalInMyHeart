@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://1ewh8us7ned8"]
+
+[ext_resource type="Script" path="res://Scripts/furnace_man.gd" id="1_v1i71"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_50u1o"]
+radius = 64.0
+height = 208.0
+
+[node name="FurnaceMan" type="CharacterBody2D"]
+scale = Vector2(0.3, 0.3)
+script = ExtResource("1_v1i71")
+
+[node name="CharacterSprite2D" type="Sprite2D" parent="."]
+
+[node name="BodyPolygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-40, 64, -24, 0, -64, -48, 0, -64, 64, -48, 24, 0, 40, 64, 0, 32)
+
+[node name="HeadPolygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, -100)
+color = Color(0.137255, 0.137255, 0.137255, 1)
+polygon = PackedVector2Array(-40, -28, 40, -28, 40, 52, -40, 52)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -40)
+shape = SubResource("CapsuleShape2D_50u1o")
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
