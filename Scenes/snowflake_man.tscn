@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://dp7s1dqw0syje"]
+
+[ext_resource type="Script" path="res://Scripts/snowflake_man.gd" id="1_adpok"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4n3w"]
+radius = 40.0
+
+[node name="SnowflakeMan" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(0.5, 0.5)
+motion_mode = 1
+wall_min_slide_angle = 0.0
+script = ExtResource("1_adpok")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-40, 0, -24, -16, -32, -32, -16, -24, 0, -40, 16, -24, 32, -32, 24, -16, 40, 0, 24, 16, 32, 32, 16, 24, 0, 40, -16, 24, -32, 32, -24, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_m4n3w")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

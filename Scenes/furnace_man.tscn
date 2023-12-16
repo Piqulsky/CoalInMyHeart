@@ -1,27 +1,129 @@
-[gd_scene load_steps=3 format=3 uid="uid://1ewh8us7ned8"]
+[gd_scene load_steps=8 format=3 uid="uid://1ewh8us7ned8"]
 
 [ext_resource type="Script" path="res://Scripts/furnace_man.gd" id="1_v1i71"]
+[ext_resource type="Texture2D" uid="uid://bt5fl4a7epi2g" path="res://Textures/furnaceman.png" id="2_cpvmi"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_50u1o"]
-radius = 64.0
-height = 208.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jpkic"]
+size = Vector2(5.65686, 20.2028)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fgx7a"]
+size = Vector2(20, 30)
+
+[sub_resource type="Animation" id="Animation_qok1p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(10.2145, 0.785534)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.785397]
+}
+
+[sub_resource type="Animation" id="Animation_3c8qd"]
+resource_name = "attack"
+length = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.125, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-11, -23), Vector2(6, -28), Vector2(17, -21), Vector2(25, 3), Vector2(10.2145, 0.785534)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.125, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [-0.485202, 0.150447, 0.574213, 1.40674, 0.785397]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nk2qx"]
+_data = {
+"RESET": SubResource("Animation_qok1p"),
+"attack": SubResource("Animation_3c8qd")
+}
 
 [node name="FurnaceMan" type="CharacterBody2D"]
-scale = Vector2(0.3, 0.3)
 script = ExtResource("1_v1i71")
 
 [node name="CharacterSprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_cpvmi")
+
+[node name="SwordArea2D" type="Area2D" parent="CharacterSprite2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite2D/SwordArea2D"]
+position = Vector2(10.2145, 0.785534)
+rotation = 0.785397
+shape = SubResource("RectangleShape2D_jpkic")
 
 [node name="BodyPolygon2D" type="Polygon2D" parent="."]
+visible = false
 polygon = PackedVector2Array(-40, 64, -24, 0, -64, -48, 0, -64, 64, -48, 24, 0, 40, 64, 0, 32)
 
 [node name="HeadPolygon2D" type="Polygon2D" parent="."]
+visible = false
 position = Vector2(0, -100)
 color = Color(0.137255, 0.137255, 0.137255, 1)
-polygon = PackedVector2Array(-40, -28, 40, -28, 40, 52, -40, 52)
+polygon = PackedVector2Array(-40, -28, 40, -28, 53.3333, 20, 40, 52, -40, 52)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -40)
-shape = SubResource("CapsuleShape2D_50u1o")
+position = Vector2(-6, 1)
+shape = SubResource("RectangleShape2D_fgx7a")
 
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nk2qx")
+}
+
+[connection signal="body_entered" from="CharacterSprite2D/SwordArea2D" to="." method="_on_sword_area_2d_body_entered"]

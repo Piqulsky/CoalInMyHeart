@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b5r45367ncejr"
-path="res://.godot/imported/tilemap-backgrounds_packed.png-f975e8a4fd186fe960e319738a6529d3.ctex"
+uid="uid://bt5fl4a7epi2g"
+path="res://.godot/imported/furnaceman.png-d40484e71fb659781d6034eebc448278.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/tilemap-backgrounds_packed.png"
-dest_files=["res://.godot/imported/tilemap-backgrounds_packed.png-f975e8a4fd186fe960e319738a6529d3.ctex"]
+source_file="res://Textures/furnaceman.png"
+dest_files=["res://.godot/imported/furnaceman.png-d40484e71fb659781d6034eebc448278.ctex"]
 
 [params]
 

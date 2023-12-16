@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://d4mf7ox1opw40"]
+
+[ext_resource type="Script" path="res://Scripts/icicle_man.gd" id="1_1n7yu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6o614"]
+size = Vector2(16, 48)
+
+[node name="IcicleMan" type="CharacterBody2D" groups=["enemies"]]
+script = ExtResource("1_1n7yu")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-8, 8, 0, -24, 8, 8, 8, 24, 0, 16, -8, 24)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6o614")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
