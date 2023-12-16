@@ -15,7 +15,6 @@ polygon = PackedVector2Array(-8, 8, 0, -24, 8, 8, 8, 24, 0, 16, -8, 24)
 shape = SubResource("RectangleShape2D_6o614")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.5
