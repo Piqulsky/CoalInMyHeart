@@ -45,7 +45,7 @@ func _movement(delta):
 			$CharacterSprite2D.scale.x = startScale * -1
 		velocity.x = direction * SPEED
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED*delta*6)
+		velocity.x = move_toward(velocity.x, 0, SPEED*delta*10)
 
 func _primary_attack():
 	$AnimationPlayer.play("attack")

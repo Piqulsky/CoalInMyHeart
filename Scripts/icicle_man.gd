@@ -11,7 +11,7 @@ func _ready():
 	pass
 
 func _physics_process(delta):
-	if position.distance_to(player.position) > 1000:
+	if global_position.distance_to(player.position) > 1000:
 		queue_free()
 		Globals.enemies -= 1
 	

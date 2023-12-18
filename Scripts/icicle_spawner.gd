@@ -2,7 +2,6 @@ extends StaticBody2D
 
 @export var player :Node2D
 var IcicleMan = preload("res://Scenes/icicle_man.tscn")
-var switch := 1
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -18,8 +17,6 @@ func _on_timer_timeout():
 	if position.distance_to(player.position) < 1000.0 and Globals.enemies < 20:
 		var s = IcicleMan.instantiate()
 		s.player = player
-		s.position.x = 30 * switch
-		switch = not switch
 		add_child(s)
 		Globals.enemies += 1
 

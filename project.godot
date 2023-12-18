@@ -21,7 +21,7 @@ Globals="*res://Scripts/Globals.gd"
 
 [display]
 
-window/size/viewport_width=512
+window/size/viewport_width=4096
 window/size/viewport_height=512
 window/size/window_width_override=1024
 window/size/window_height_override=1024
