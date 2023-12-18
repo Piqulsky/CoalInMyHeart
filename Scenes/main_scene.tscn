@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c11346624i51h"]
+[gd_scene load_steps=17 format=3 uid="uid://c11346624i51h"]
 
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="1_0glp7"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="1_fywnp"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://d23aabwtkk7sa" path="res://Scenes/lava_pool.tscn" id="7_5s0wf"]
 [ext_resource type="PackedScene" uid="uid://d1q0yhjtqyqjb" path="res://Scenes/coal_pile.tscn" id="8_kr1bq"]
 [ext_resource type="PackedScene" uid="uid://3yail7apadvr" path="res://Scenes/pipe.tscn" id="9_lxlmt"]
+[ext_resource type="PackedScene" uid="uid://d4mf7ox1opw40" path="res://Scenes/icicle_man.tscn" id="10_78qjw"]
 [ext_resource type="PackedScene" uid="uid://hsl770w7k4l0" path="res://Scenes/icicle_spawner.tscn" id="11_n2vh4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nej1q"]
@@ -317,3 +318,7 @@ scale = Vector2(-1, 1)
 
 [node name="Pipe6" parent="HeatSources/Pipes" instance=ExtResource("9_lxlmt")]
 position = Vector2(7720, -256)
+
+[node name="IcicleMan" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_78qjw")]
+position = Vector2(-86, -75)
+player = NodePath("../FurnaceMan")

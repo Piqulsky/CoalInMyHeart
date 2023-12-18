@@ -10,17 +10,24 @@ func _ready():
 	_make_path()
 
 func _physics_process(delta):
+	if position.distance_to(player.position) > 1000:
+		queue_free()
+		Globals.enemies -= 1
+	
 	var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 	velocity = direction * SPEED
+	
 	if move_and_slide():
 		var collision = move_and_collide(velocity*delta)
 		if collision:
 			if collision.get_collider().get_name() == "FurnaceMan":
 				Globals.hit.emit(5)
 				queue_free()
+				Globals.enemies -= 1
 
 func damage():
 	queue_free()
+	Globals.enemies -= 1
 
 func _make_path():
 	$NavigationAgent2D.target_position = player.global_position

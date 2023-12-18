@@ -2,19 +2,29 @@ extends CharacterBody2D
 
 @export var player :Node2D
 const SPEED = 25.0
+var direction := -1
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
 func _ready():
-	_make_path()
+	pass
 
 func _physics_process(delta):
-	var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
-	velocity = direction * SPEED
+	if position.distance_to(player.position) > 1000:
+		queue_free()
+		Globals.enemies -= 1
+	
+	if is_on_wall():
+		if direction == 1:
+			direction = -1
+		else:
+			direction = 1
+	
+	velocity.x = direction * SPEED
 	
 	if not is_on_floor():
-		velocity.y += gravity*delta*7
+		velocity.y += gravity*delta
 	
 	if move_and_slide():
 		var collision = move_and_collide(velocity*delta)
@@ -22,12 +32,8 @@ func _physics_process(delta):
 			if collision.get_collider().get_name() == "FurnaceMan":
 				Globals.hit.emit(5)
 				queue_free()
+				Globals.enemies -= 1
 
 func damage():
 	queue_free()
-
-func _make_path():
-	$NavigationAgent2D.target_position = player.global_position
-
-func _on_timer_timeout():
-	_make_path()
+	Globals.enemies -= 1

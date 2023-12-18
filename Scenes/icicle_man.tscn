@@ -13,11 +13,3 @@ polygon = PackedVector2Array(-8, 8, 0, -24, 8, 8, 8, 24, 0, 16, -8, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6o614")
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-autostart = true
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
