@@ -1,0 +1,290 @@
+[gd_scene load_steps=11 format=3 uid="uid://bulhmeaip8gk0"]
+
+[ext_resource type="Script" path="res://Scripts/winter_man.gd" id="1_ag4mq"]
+[ext_resource type="Texture2D" uid="uid://rla0qnjpxgqk" path="res://Textures/6.png" id="2_4js1s"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ogw8l"]
+size = Vector2(176, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38x20"]
+size = Vector2(120, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_icyb8"]
+size = Vector2(104, 96)
+
+[sub_resource type="Animation" id="Animation_m7sy6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlamArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlamArea2D/Polygon2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PierceArea2D/Polygon2D:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PierceArea2D/CollisionShape2D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("MeleeArea2D/CollisionShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("MeleeArea2D/Polygon2D:scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_etdpr"]
+resource_name = "pierce"
+length = 3.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PierceArea2D/Polygon2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3, 3.1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1e-05, 1), Vector2(4, 1), Vector2(1e-05, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PierceArea2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3, 3.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_8pabh"]
+resource_name = "slam"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SlamArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SlamArea2D/Polygon2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1, 2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, true, false]
+}
+
+[sub_resource type="Animation" id="Animation_o31mt"]
+resource_name = "melee"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("MeleeArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("MeleeArea2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1.5, 1), Vector2(0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_e84lf"]
+_data = {
+"RESET": SubResource("Animation_m7sy6"),
+"melee": SubResource("Animation_o31mt"),
+"pierce": SubResource("Animation_etdpr"),
+"slam": SubResource("Animation_8pabh")
+}
+
+[node name="WinterMan" type="CharacterBody2D" groups=["enemies"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_ag4mq")
+
+[node name="HeadPolygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, -40)
+polygon = PackedVector2Array(-24, 0, 0, -24, 24, 0, 0, 8)
+
+[node name="BodyPolygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-24, -24, 0, -32, 24, -24, 0, 24)
+
+[node name="ArmPolygon2D" type="Polygon2D" parent="."]
+position = Vector2(-24, -24)
+polygon = PackedVector2Array(-16, 0, 0, 0, -8, 16, -32, 24)
+
+[node name="ArmPolygon2D2" type="Polygon2D" parent="."]
+position = Vector2(24, -24)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(-16, 0, 0, 0, -8, 16, -32, 24)
+
+[node name="LegsPolygon2D" type="Polygon2D" parent="."]
+position = Vector2(0, 24)
+polygon = PackedVector2Array(16, 8, 16, 24, 0, 8, -16, 24, -16, 8, 0, 0)
+
+[node name="BodyCollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-56, -64, 56, -64, 56, 48, -56, 48)
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="PathTimer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -48.0
+offset_top = -72.0
+offset_right = 48.0
+offset_bottom = -64.0
+step = 2.0
+value = 100.0
+show_percentage = false
+
+[node name="LifeSprite2D1" type="Sprite2D" parent="."]
+position = Vector2(-8, -80)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_4js1s")
+
+[node name="LifeSprite2D2" type="Sprite2D" parent="."]
+position = Vector2(8, -80)
+scale = Vector2(0.125, 0.125)
+texture = ExtResource("2_4js1s")
+
+[node name="SlamArea2D" type="Area2D" parent="."]
+position = Vector2(0, 40)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SlamArea2D"]
+shape = SubResource("RectangleShape2D_ogw8l")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="SlamArea2D"]
+visible = false
+color = Color(0.917647, 0, 0.227451, 0.588235)
+polygon = PackedVector2Array(-56, -8, 56, -8, 56, 8, -56, 8)
+
+[node name="PierceArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PierceArea2D"]
+position = Vector2(-60, 0)
+shape = SubResource("RectangleShape2D_38x20")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="PierceArea2D"]
+scale = Vector2(1e-05, 1)
+color = Color(0.917647, 0, 0.227451, 0.588235)
+polygon = PackedVector2Array(-56, -48, 0, -48, 0, 48, -56, 48)
+
+[node name="MeleeArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeArea2D"]
+position = Vector2(-52, 0)
+shape = SubResource("RectangleShape2D_icyb8")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="MeleeArea2D"]
+scale = Vector2(1e-05, 1)
+color = Color(0.917647, 0, 0.227451, 0.588235)
+polygon = PackedVector2Array(-104, -48, 0, -48, 0, 48, -104, 48)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_e84lf")
+}
+
+[node name="AttackTimer" type="Timer" parent="."]
+wait_time = 3.5
+autostart = true
+
+[connection signal="timeout" from="PathTimer" to="." method="_on_path_timer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_start_timer_timeout"]
+[connection signal="body_entered" from="SlamArea2D" to="." method="_on_slam_area_2d_body_entered"]
+[connection signal="body_entered" from="PierceArea2D" to="." method="_on_pierce_area_2d_body_entered"]
+[connection signal="body_entered" from="MeleeArea2D" to="." method="_on_melee_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

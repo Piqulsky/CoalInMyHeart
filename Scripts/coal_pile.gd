@@ -11,14 +11,13 @@ func _ready():
 func _process(delta):
 	if heating:
 		if Globals.temperature < 100:
-			Globals.temperature += 0.04
+			Globals.temperature += Globals.HEAT_VALUE
 
 func damage():
-	if $ProgressBar.value < 100:
-		$ProgressBar.value += $ProgressBar.step
+	if $Sprite2D.frame < 4:
+		$Sprite2D.frame += 1
 		Globals.temperature -= 10
-	if $ProgressBar.value >= 100:
-		$ProgressBar.visible = false
+	if $Sprite2D.frame == 4:
 		$HeatArea2D/Polygon2D.visible = true
 		$HeatArea2D/CollisionShape2D.set_deferred("disabled", false)
 

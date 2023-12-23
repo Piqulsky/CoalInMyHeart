@@ -18,8 +18,10 @@ func _physics_process(delta):
 	if is_on_wall():
 		if direction == 1:
 			direction = -1
+			$Sprite2D.scale.x = 1
 		else:
 			direction = 1
+			$Sprite2D.scale.x = -1
 	
 	velocity.x = direction * SPEED
 	

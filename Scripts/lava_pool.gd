@@ -4,14 +4,14 @@ var heating = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	$AnimatedSprite2D.play("default")
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta):
 	if heating:
 		if Globals.temperature < 100:
-			Globals.temperature += 0.04
+			Globals.temperature += Globals.HEAT_VALUE
 
 
 func _on_heat_area_2d_body_entered(body):

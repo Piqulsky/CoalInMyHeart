@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjklyky3j6wxv"]
+[gd_scene load_steps=3 format=3 uid="uid://cjklyky3j6wxv"]
 
 [ext_resource type="Script" path="res://Scripts/snowflake_spawner.gd" id="1_0ca3p"]
+[ext_resource type="Texture2D" uid="uid://ctcu2ydl3h0lj" path="res://Textures/snowflake-spawner.PNG" id="2_6cbe0"]
 
 [node name="SnowflakeSpawner" type="StaticBody2D" groups=["enemies"]]
 script = ExtResource("1_0ca3p")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
+visible = false
 color = Color(0.576471, 1, 0.968627, 1)
 polygon = PackedVector2Array(-8, -16, 8, -16, 16, 0, 16, 16, -16, 16, -16, 0)
 
@@ -24,5 +26,9 @@ offset_bottom = -16.0
 step = 25.0
 value = 100.0
 show_percentage = false
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_6cbe0")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

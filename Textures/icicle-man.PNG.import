@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifyx64mb137k"
-path="res://.godot/imported/tilemap.PNG-a824fa3de477f4679bc4e42710688ded.ctex"
+uid="uid://ba6e28rhhnchl"
+path="res://.godot/imported/icicle-man.PNG-71748b30a6ec6869ea21b2fc6785cca5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/tilemap.PNG"
-dest_files=["res://.godot/imported/tilemap.PNG-a824fa3de477f4679bc4e42710688ded.ctex"]
+source_file="res://Textures/icicle-man.PNG"
+dest_files=["res://.godot/imported/icicle-man.PNG-71748b30a6ec6869ea21b2fc6785cca5.ctex"]
 
 [params]
 

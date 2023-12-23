@@ -1,6 +1,7 @@
 extends Node2D
 
 var heating := false
+var unlocked := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -9,14 +10,14 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if Input.is_action_just_pressed("jump") and not heating:
+	if Input.is_action_just_pressed("jump") and not unlocked:
 		$AnimationPlayer.stop()
 		var body = get_node("/root/MainScene/FurnaceMan")
 		body.pause = false
 		body.chainAnimation = false
 	elif heating:
 		if Globals.temperature < 100:
-			Globals.temperature += 0.04
+			Globals.temperature += Globals.HEAT_VALUE
 
 
 func _on_handle_area_2d_body_entered(body):
@@ -31,6 +32,7 @@ func _on_animation_player_animation_finished(anim_name):
 	var body = get_node("/root/MainScene/FurnaceMan")
 	body.pause = false
 	body.chainAnimation = false
+	unlocked = true
 
 
 func _on_heat_area_2d_body_entered(body):

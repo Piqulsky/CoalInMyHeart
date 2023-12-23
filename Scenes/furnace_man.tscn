@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://1ewh8us7ned8"]
 
 [ext_resource type="Script" path="res://Scripts/furnace_man.gd" id="1_v1i71"]
-[ext_resource type="Texture2D" uid="uid://bt5fl4a7epi2g" path="res://Textures/furnaceman.png" id="2_cpvmi"]
+[ext_resource type="Texture2D" uid="uid://i5dtgam81t23" path="res://Textures/furnace-man.PNG" id="2_s0iph"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpkic"]
 size = Vector2(5.65686, 20.2028)
@@ -47,10 +47,23 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.785397]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_3c8qd"]
 resource_name = "attack"
 length = 0.25
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,10 +71,10 @@ tracks/0/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:positio
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.125, 0.2, 0.25),
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-11, -23), Vector2(6, -28), Vector2(17, -21), Vector2(25, 3), Vector2(10.2145, 0.785534)]
+"values": [Vector2(-11, -23), Vector2(-21, -20), Vector2(10, -21), Vector2(25, 3), Vector2(10.2145, 0.785534)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -70,10 +83,10 @@ tracks/1/path = NodePath("CharacterSprite2D/SwordArea2D/CollisionShape2D:rotatio
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.125, 0.2, 0.25),
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2, 0.25),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [-0.485202, 0.150447, 0.574213, 1.40674, 0.785397]
+"values": [-0.485202, -0.837758, 0.480082, 1.26536, 0.785397]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -87,6 +100,18 @@ tracks/2/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("CharacterSprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.12, 0.2, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nk2qx"]
 _data = {
@@ -98,9 +123,12 @@ _data = {
 script = ExtResource("1_v1i71")
 
 [node name="CharacterSprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_cpvmi")
+texture = ExtResource("2_s0iph")
+hframes = 12
 
 [node name="SwordArea2D" type="Area2D" parent="CharacterSprite2D"]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterSprite2D/SwordArea2D"]
 position = Vector2(10.2145, 0.785534)

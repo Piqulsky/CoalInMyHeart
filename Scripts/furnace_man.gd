@@ -16,7 +16,7 @@ func _ready():
 func _physics_process(delta):
 	if not pause:
 		if not inHeat:
-			Globals.temperature -= 0.02
+			Globals.temperature -= Globals.COLD_VAlUE
 		if not is_on_floor():
 			velocity.y += gravity*delta
 		if Input.is_action_just_pressed("jump") and is_on_floor():

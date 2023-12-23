@@ -1,71 +1,70 @@
-[gd_scene load_steps=17 format=3 uid="uid://c11346624i51h"]
+[gd_scene load_steps=16 format=3 uid="uid://c11346624i51h"]
 
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="1_0glp7"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="1_fywnp"]
-[ext_resource type="Texture2D" uid="uid://bjaajqva0f8ac" path="res://Textures/tilemap.png" id="3_haakd"]
+[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="3_unywd"]
 [ext_resource type="PackedScene" uid="uid://dlr50bagndlfl" path="res://Scenes/gui.tscn" id="4_ukmvb"]
 [ext_resource type="PackedScene" uid="uid://cjklyky3j6wxv" path="res://Scenes/snowflake_spawner.tscn" id="6_5h032"]
 [ext_resource type="PackedScene" uid="uid://d23aabwtkk7sa" path="res://Scenes/lava_pool.tscn" id="7_5s0wf"]
 [ext_resource type="PackedScene" uid="uid://d1q0yhjtqyqjb" path="res://Scenes/coal_pile.tscn" id="8_kr1bq"]
 [ext_resource type="PackedScene" uid="uid://3yail7apadvr" path="res://Scenes/pipe.tscn" id="9_lxlmt"]
-[ext_resource type="PackedScene" uid="uid://d4mf7ox1opw40" path="res://Scenes/icicle_man.tscn" id="10_78qjw"]
 [ext_resource type="PackedScene" uid="uid://hsl770w7k4l0" path="res://Scenes/icicle_spawner.tscn" id="11_n2vh4"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_nej1q"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_c2ny1"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_5sojo"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_lwkfa"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_pj4l0"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_55gi0"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_l5tdc"]
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_mmckb"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4j44"]
-texture = ExtResource("3_haakd")
+texture = ExtResource("3_unywd")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_nej1q")
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_c2ny1")
 1:0/0 = 0
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
-1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_pj4l0")
+1:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_55gi0")
 0:1/0 = 0
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
-0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_5sojo")
+0:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_lwkfa")
 1:1/0 = 0
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
-1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_l5tdc")
-2:0/0 = 0
-2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
-2:0/0/physics_layer_0/angular_velocity = 0.0
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+1:1/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_mmckb")
 2:1/0 = 0
 2:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 2:1/0/physics_layer_0/angular_velocity = 0.0
-2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:1/0 = 0
 3:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:1/0/physics_layer_0/angular_velocity = 0.0
-3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 3:0/0 = 0
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 16, -16, -16, 16, -16, 16, 16)
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 
 [sub_resource type="TileSet" id="TileSet_hpg3r"]
 tile_size = Vector2i(32, 32)
@@ -318,7 +317,3 @@ scale = Vector2(-1, 1)
 
 [node name="Pipe6" parent="HeatSources/Pipes" instance=ExtResource("9_lxlmt")]
 position = Vector2(7720, -256)
-
-[node name="IcicleMan" parent="." node_paths=PackedStringArray("player") instance=ExtResource("10_78qjw")]
-position = Vector2(-86, -75)
-player = NodePath("../FurnaceMan")

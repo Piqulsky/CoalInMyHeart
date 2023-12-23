@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bifyx64mb137k"
-path="res://.godot/imported/tilemap.PNG-a824fa3de477f4679bc4e42710688ded.ctex"
+uid="uid://dr6f81ikci33b"
+path="res://.godot/imported/coal-pile.PNG-13111ad4f952f2c1724d3ae1be762ea2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/tilemap.PNG"
-dest_files=["res://.godot/imported/tilemap.PNG-a824fa3de477f4679bc4e42710688ded.ctex"]
+source_file="res://Textures/coal-pile.PNG"
+dest_files=["res://.godot/imported/coal-pile.PNG-13111ad4f952f2c1724d3ae1be762ea2.ctex"]
 
 [params]
 
