@@ -28,14 +28,15 @@ func _physics_process(delta):
 	if not is_on_floor():
 		velocity.y += gravity*delta
 	
-	if move_and_slide():
-		var collision = move_and_collide(velocity*delta)
-		if collision:
-			if collision.get_collider().get_name() == "FurnaceMan":
-				Globals.hit.emit(5)
-				queue_free()
-				Globals.enemies -= 1
+	move_and_slide()
 
 func damage():
 	queue_free()
 	Globals.enemies -= 1
+
+
+func _on_damage_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		Globals.hit.emit(5)
+		queue_free()
+		Globals.enemies -= 1

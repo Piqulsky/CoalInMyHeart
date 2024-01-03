@@ -1,0 +1,50 @@
+[gd_scene load_steps=5 format=3 uid="uid://cau378qvo1l4o"]
+
+[ext_resource type="Texture2D" uid="uid://brn7d53t26st8" path="res://Textures/1.png" id="1_6ge4u"]
+[ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_aiqxf"]
+[ext_resource type="Texture2D" uid="uid://ccd6byf0vtox1" path="res://Textures/2.png" id="1_wuvsc"]
+[ext_resource type="Texture2D" uid="uid://imdnicu6cy6" path="res://Textures/3.png" id="2_vsndn"]
+
+[node name="GameOver" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_aiqxf")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 512.0
+color = Color(0, 0, 0, 0.392157)
+
+[node name="RestartTextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 256.0
+offset_right = 320.0
+offset_bottom = 320.0
+texture_normal = ExtResource("1_wuvsc")
+stretch_mode = 0
+
+[node name="ExitTextureButton" type="TextureButton" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 384.0
+offset_right = 320.0
+offset_bottom = 448.0
+texture_normal = ExtResource("2_vsndn")
+stretch_mode = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 192.0
+offset_top = 64.0
+offset_right = 320.0
+offset_bottom = 192.0
+texture = ExtResource("1_6ge4u")
+
+[connection signal="button_down" from="RestartTextureButton" to="." method="_on_restart_texture_button_button_down"]
+[connection signal="button_down" from="ExitTextureButton" to="." method="_on_exit_texture_button_button_down"]

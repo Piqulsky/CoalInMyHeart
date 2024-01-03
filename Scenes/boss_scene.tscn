@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cbsukyor6t4f8"]
+[gd_scene load_steps=12 format=3 uid="uid://cbsukyor6t4f8"]
 
 [ext_resource type="PackedScene" uid="uid://dlr50bagndlfl" path="res://Scenes/gui.tscn" id="1_dluco"]
-[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.png" id="2_31hdn"]
+[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="2_31hdn"]
+[ext_resource type="PackedScene" uid="uid://cau378qvo1l4o" path="res://Scenes/game_over.tscn" id="2_i8rds"]
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="3_uob6w"]
 [ext_resource type="PackedScene" uid="uid://bulhmeaip8gk0" path="res://Scenes/winter_man.tscn" id="4_7od4m"]
 
@@ -75,6 +76,13 @@ z_index = 1
 position = Vector2(0, -100)
 
 [node name="GUI" parent="Camera2D" instance=ExtResource("1_dluco")]
+offset_left = -256.0
+offset_top = -256.0
+offset_right = -256.0
+offset_bottom = -256.0
+
+[node name="GameOver" parent="Camera2D" instance=ExtResource("2_i8rds")]
+visible = false
 offset_left = -256.0
 offset_top = -256.0
 offset_right = -256.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://3yail7apadvr"]
+[gd_scene load_steps=6 format=3 uid="uid://3yail7apadvr"]
 
 [ext_resource type="Script" path="res://Scripts/pipe.gd" id="1_ui8j0"]
 
@@ -137,9 +137,6 @@ _data = {
 "unlock": SubResource("Animation_ja15p")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ewrlu"]
-size = Vector2(700, 8)
-
 [node name="Pipe" type="Node2D"]
 script = ExtResource("1_ui8j0")
 
@@ -175,16 +172,18 @@ libraries = {
 [node name="HeatArea2D" type="Area2D" parent="."]
 position = Vector2(32, 24)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HeatArea2D"]
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="HeatArea2D"]
 position = Vector2(246, 250)
 rotation = 0.785398
-shape = SubResource("RectangleShape2D_ewrlu")
+polygon = PackedVector2Array(362.039, -25.4558, -350.018, -3.53559, -347.189, 3.53548, 277.186, 59.397)
 disabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="HeatArea2D"]
 visible = false
+position = Vector2(246, 250)
+rotation = 0.785398
 color = Color(0.831373, 0.27451, 0, 0.223529)
-polygon = PackedVector2Array(-4, 6, 2, 0, 496, 494, 490, 500)
+polygon = PackedVector2Array(362.039, -25.4558, -350.018, -3.53559, -347.189, 3.53548, 277.186, 59.397)
 
 [connection signal="body_entered" from="ChainPolygon2D/HandleArea2D" to="." method="_on_handle_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

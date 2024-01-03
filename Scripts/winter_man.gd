@@ -6,7 +6,7 @@ const KNOCKUP_VELOCITY := -500.0
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 2
 var pause := true
-var lives := 2
+var lives := 0
 @onready var animPlayer := $AnimationPlayer
 
 var movementStart :Vector2
@@ -66,7 +66,6 @@ func _on_path_timer_timeout():
 func _on_start_timer_timeout():
 	pause = false
 
-
 func _on_animation_player_animation_finished(anim_name):
 	pause = false
 
@@ -75,46 +74,102 @@ func _deal_damage(quantity):
 	man.velocity.y = KNOCKUP_VELOCITY
 	Globals.temperature -= quantity
 
+func _jump_slam(dist):
+	movementProgress = 0.0
+	movementDelay = 0.0
+	progressMultiplier = 0.5
+	pause = true
+	animPlayer.play("slam") 
+	movementStart = global_position
+	if global_position.x > player.global_position.x:
+		movementEdit = Vector2(global_position.x - (dist/2), -200)
+	else:
+		movementEdit = Vector2(global_position.x + (dist/2), -200)
+	movementEnd = Vector2(player.global_position.x, global_position.y)
+
+func _pierce(dist):
+	movementProgress = 0.0
+	movementDelay = 3.0
+	progressMultiplier = 2.0
+	pause = true
+	animPlayer.play("pierce") 
+	movementStart = global_position
+	if global_position.x > player.global_position.x:
+		movementEdit = Vector2(global_position.x - (dist/2), global_position.y)
+		movementEnd = Vector2(global_position.x - 224, global_position.y)
+		$PierceArea2D.scale.x = 1
+	else:
+		movementEdit = Vector2(global_position.x + (dist/2), global_position.y)
+		movementEnd = Vector2(global_position.x + 224, global_position.y)
+		$PierceArea2D.scale.x = -1
+
+func _melee():
+	movementProgress = 1.0
+	progressMultiplier = 1.0
+	movementDelay = 0.0
+	pause = true
+	if global_position.x > player.global_position.x:
+		$MeleeArea2D.scale.x = 1
+	else:
+		$MeleeArea2D.scale.x = -1
+	animPlayer.play("melee")
+
+func _uppercut():
+	movementProgress = 0.0
+	progressMultiplier = 2.0
+	movementDelay = 0.5
+	pause = true
+	animPlayer.play("uppecut") 
+	movementStart = global_position
+	movementEdit = Vector2(global_position.x, global_position.y - 96)
+	movementEnd = Vector2(global_position.x, global_position.y - 192)
+	if global_position.x > player.global_position.x:
+		$UppercutArea2D.scale.x = 1
+	else:
+		$UppercutArea2D.scale.x = -1
+	$AttackTimer.start(1.0)
+
+func _land(dist):
+	movementProgress = 0.0
+	progressMultiplier = 2.0
+	movementDelay = 0.0
+	pause = true
+	animPlayer.play("land") 
+	movementStart = global_position
+	movementEnd = Vector2(player.global_position.x, 48)
+	movementEdit = Vector2((movementStart.x + movementEnd.x)/2, (movementStart.y + movementEnd.y)/2)
+	if global_position.x > player.global_position.x:
+		$LandArea2D.scale.x = 1
+	else:
+		$LandArea2D.scale.x = -1
+	$AttackTimer.start(1.0)
+
+func _swirl():
+	if global_position.x > player.global_position.x:
+		$SwirlArea.scale.x = -1
+	else:
+		$SwirlArea.scale.x = 1
+	animPlayer.play("swirl") 
+
 func _on_attack_timer_timeout():
+	if $AttackTimer.wait_time != 3.5:
+		$AttackTimer.start(3.5)
 	var dist = global_position.distance_to(player.global_position)
-	#print(dist)
-	if dist > 200 and lives == 2:
-		movementProgress = 0.0
-		movementDelay = 0.0
-		progressMultiplier = 0.5
-		pause = true
-		animPlayer.play("slam") 
-		movementStart = global_position
-		if global_position.x > player.global_position.x:
-			movementEdit = Vector2(global_position.x - (global_position.distance_to(player.global_position)/2), -200)
-		else:
-			movementEdit = Vector2(global_position.x + (global_position.distance_to(player.global_position)/2), -200)
-		movementEnd = Vector2(player.global_position.x, global_position.y)
-	elif dist > 120 and lives == 2:
-		movementProgress = 0.0
-		movementDelay = 3.0
-		progressMultiplier = 2.0
-		pause = true
-		animPlayer.play("pierce") 
-		movementStart = global_position
-		if global_position.x > player.global_position.x:
-			movementEdit = Vector2(global_position.x - (global_position.distance_to(player.global_position)/2), global_position.y)
-			movementEnd = Vector2(global_position.x - 224, global_position.y)
-			$PierceArea2D.scale.x = 1
-		else:
-			movementEdit = Vector2(global_position.x + (global_position.distance_to(player.global_position)/2), global_position.y)
-			movementEnd = Vector2(global_position.x + 224, global_position.y)
-			$PierceArea2D.scale.x = -1
-	elif dist < 90 and lives == 2:
-		movementProgress = 1.0
-		progressMultiplier = 1.0
-		movementDelay = 0.0
-		pause = true
-		if global_position.x > player.global_position.x:
-			$MeleeArea2D.scale.x = 1
-		else:
-			$MeleeArea2D.scale.x = -1
-		animPlayer.play("melee") 
+	var on_floor = true
+	if position.y < 0.0:
+		on_floor = false
+	if lives == 2 and dist > 200:
+		_jump_slam(dist)
+	elif lives == 2 and dist > 120:
+		_pierce(dist)
+	elif lives == 2 and dist < 90:
+		_melee()
+	elif lives == 1 and dist < 90 and on_floor:
+		_uppercut()
+	elif lives == 1 and not on_floor:
+		_land(dist)
+	elif lives == 0 and dist < 90:
+		_swirl()
 
 
 func _on_slam_area_2d_body_entered(body):
@@ -130,3 +185,19 @@ func _on_pierce_area_2d_body_entered(body):
 func _on_melee_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
 		_deal_damage(15)
+
+
+func _on_uppercut_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(15)
+
+
+func _on_land_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(25)
+
+
+func _on_swirl_area_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(10)
+

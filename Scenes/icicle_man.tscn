@@ -1,12 +1,16 @@
-[gd_scene load_steps=4 format=3 uid="uid://d4mf7ox1opw40"]
+[gd_scene load_steps=5 format=3 uid="uid://d4mf7ox1opw40"]
 
 [ext_resource type="Script" path="res://Scripts/icicle_man.gd" id="1_1n7yu"]
 [ext_resource type="Texture2D" uid="uid://ba6e28rhhnchl" path="res://Textures/icicle-man.PNG" id="2_ddyfs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6o614"]
-size = Vector2(32, 56)
+size = Vector2(26.6667, 56)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m28br"]
+size = Vector2(33.3333, 61.6667)
 
 [node name="IcicleMan" type="CharacterBody2D" groups=["enemies"]]
+scale = Vector2(0.6, 0.6)
 script = ExtResource("1_1n7yu")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
@@ -14,8 +18,16 @@ visible = false
 polygon = PackedVector2Array(-8, 8, 0, -24, 8, 8, 8, 24, 0, 16, -8, 24)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 4)
+position = Vector2(-4.96705e-07, 4)
 shape = SubResource("RectangleShape2D_6o614")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ddyfs")
+
+[node name="DamageArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
+position = Vector2(-4.96705e-07, 0.833334)
+shape = SubResource("RectangleShape2D_m28br")
+
+[connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
