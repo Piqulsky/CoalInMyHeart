@@ -1,7 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d23aabwtkk7sa"]
+[gd_scene load_steps=17 format=3 uid="uid://d23aabwtkk7sa"]
 
 [ext_resource type="Script" path="res://Scripts/lava_pool.gd" id="1_8yr6u"]
 [ext_resource type="Texture2D" uid="uid://frrnsjxqxmmd" path="res://Textures/lava-pool.PNG" id="2_dll7b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03g0p"]
+size = Vector2(64, 8)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_fokr6"]
 radius = 88.0
@@ -91,8 +94,12 @@ animations = [{
 "speed": 8.0
 }]
 
-[node name="LavaPool" type="Node2D"]
+[node name="LavaPool" type="StaticBody2D" groups=["sources"]]
 script = ExtResource("1_8yr6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 4)
+shape = SubResource("RectangleShape2D_03g0p")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 visible = false

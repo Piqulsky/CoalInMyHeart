@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://bulhmeaip8gk0"]
+[gd_scene load_steps=19 format=3 uid="uid://bulhmeaip8gk0"]
 
 [ext_resource type="Script" path="res://Scripts/winter_man.gd" id="1_ag4mq"]
 [ext_resource type="Texture2D" uid="uid://rla0qnjpxgqk" path="res://Textures/6.png" id="2_4js1s"]
@@ -20,6 +20,9 @@ size = Vector2(160, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_317vq"]
 size = Vector2(80, 72)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_un7ax"]
+size = Vector2(144, 96)
 
 [sub_resource type="Animation" id="Animation_m7sy6"]
 length = 0.001
@@ -203,6 +206,58 @@ tracks/14/keys = {
 "update": 0,
 "values": [Vector2(80, 72)]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("SwipeArea2D/CollisionShape2D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("SwipeArea2D/Polygon2D:scale")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1e-05, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_xjoj2"]
+resource_name = "land"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("LandArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("LandArea2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_o31mt"]
 resource_name = "melee"
@@ -287,61 +342,6 @@ tracks/1/keys = {
 "values": [false, true, false]
 }
 
-[sub_resource type="Animation" id="Animation_qt37g"]
-resource_name = "uppecut"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UppercutArea2D/Polygon2D:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(1, 1), Vector2(1, 1e-05)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UppercutArea2D/CollisionShape2D:disabled")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_xjoj2"]
-resource_name = "land"
-length = 0.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("LandArea2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("LandArea2D/Polygon2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(1, 1), Vector2(1e-05, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_e87on"]
 resource_name = "swirl"
 length = 2.0
@@ -406,9 +406,65 @@ tracks/4/keys = {
 "values": [Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72)]
 }
 
+[sub_resource type="Animation" id="Animation_qt37g"]
+resource_name = "uppecut"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UppercutArea2D/Polygon2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UppercutArea2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_yvr1l"]
+resource_name = "full_swipe"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwipeArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwipeArea2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e84lf"]
 _data = {
 "RESET": SubResource("Animation_m7sy6"),
+"full_swipe": SubResource("Animation_yvr1l"),
 "land": SubResource("Animation_xjoj2"),
 "melee": SubResource("Animation_o31mt"),
 "pierce": SubResource("Animation_etdpr"),
@@ -550,6 +606,19 @@ position = Vector2(0, 48)
 color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-80, -72, -80, 0, 0, 0, 0, -72)
 
+[node name="SwipeArea2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeArea2D"]
+position = Vector2(-72, 8)
+shape = SubResource("RectangleShape2D_un7ax")
+disabled = true
+
+[node name="Polygon2D" type="Polygon2D" parent="SwipeArea2D"]
+position = Vector2(0, 48)
+scale = Vector2(1e-05, 1)
+color = Color(0.917647, 0, 0.227451, 0.588235)
+polygon = PackedVector2Array(-144, -88, -144, 0, 0, 0, 0, -88)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_e84lf")
@@ -567,5 +636,6 @@ autostart = true
 [connection signal="body_entered" from="UppercutArea2D" to="." method="_on_uppercut_area_2d_body_entered"]
 [connection signal="body_entered" from="LandArea2D" to="." method="_on_land_area_2d_body_entered"]
 [connection signal="body_entered" from="SwirlArea" to="." method="_on_swirl_area_body_entered"]
+[connection signal="body_entered" from="SwipeArea2D" to="." method="_on_swipe_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

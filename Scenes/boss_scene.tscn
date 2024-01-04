@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbsukyor6t4f8"]
+[gd_scene load_steps=13 format=3 uid="uid://cbsukyor6t4f8"]
 
 [ext_resource type="PackedScene" uid="uid://dlr50bagndlfl" path="res://Scenes/gui.tscn" id="1_dluco"]
 [ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="2_31hdn"]
 [ext_resource type="PackedScene" uid="uid://cau378qvo1l4o" path="res://Scenes/game_over.tscn" id="2_i8rds"]
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="3_uob6w"]
 [ext_resource type="PackedScene" uid="uid://bulhmeaip8gk0" path="res://Scenes/winter_man.tscn" id="4_7od4m"]
+[ext_resource type="Script" path="res://Scripts/boss_sources.gd" id="6_mgnlb"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_erktr"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
@@ -96,6 +97,17 @@ layer_0/tile_data = PackedInt32Array(327678, 131073, 0, 327677, 131073, 0, 32767
 [node name="FurnaceMan" parent="." instance=ExtResource("3_uob6w")]
 position = Vector2(-192, -272)
 
-[node name="WinterMan" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_7od4m")]
+[node name="WinterMan" parent="." node_paths=PackedStringArray("player", "heatSources") instance=ExtResource("4_7od4m")]
 position = Vector2(168, 48)
 player = NodePath("../FurnaceMan")
+heatSources = NodePath("../BossSources")
+
+[node name="BossSources" type="Node2D" parent="."]
+position = Vector2(0, 96)
+script = ExtResource("6_mgnlb")
+
+[node name="SpawnTimer" type="Timer" parent="BossSources"]
+wait_time = 20.0
+autostart = true
+
+[connection signal="timeout" from="BossSources/SpawnTimer" to="BossSources" method="_on_spawn_timer_timeout"]

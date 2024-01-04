@@ -3,10 +3,12 @@ extends CharacterBody2D
 const SPEED = 30.0
 const KNOCKUP_VELOCITY := -500.0
 @export var player :Node2D
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+@export var heatSources :Node2D
+
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity") / 2
 var pause := true
-var lives := 0
+var lives := 2
+
 @onready var animPlayer := $AnimationPlayer
 
 var movementStart :Vector2
@@ -58,7 +60,10 @@ func damage():
 		
 
 func _makepath():
-	$NavigationAgent2D.target_position = player.global_position
+	if heatSources.get_child_count() > 1:
+		$NavigationAgent2D.target_position = heatSources.get_child(1).global_position
+	else:
+		$NavigationAgent2D.target_position = player.global_position
 
 func _on_path_timer_timeout():
 	_makepath()
@@ -151,6 +156,19 @@ func _swirl():
 		$SwirlArea.scale.x = 1
 	animPlayer.play("swirl") 
 
+func _kill_heat():
+	movementProgress = 1.0
+	progressMultiplier = 2.0
+	movementDelay = 1.0
+	pause = true
+	var sourceLocation = heatSources.get_child(1).global_position
+	pause = true
+	if global_position.x > sourceLocation.x:
+		$SwipeArea2D.scale.x = 1
+	else:
+		$SwipeArea2D.scale.x = -1
+	animPlayer.play("full_swipe")
+
 func _on_attack_timer_timeout():
 	if $AttackTimer.wait_time != 3.5:
 		$AttackTimer.start(3.5)
@@ -158,7 +176,9 @@ func _on_attack_timer_timeout():
 	var on_floor = true
 	if position.y < 0.0:
 		on_floor = false
-	if lives == 2 and dist > 200:
+	if heatSources.get_child_count() > 1 and global_position.distance_to(heatSources.get_child(1).global_position) < 144:
+		_kill_heat()
+	elif lives == 2 and dist > 200:
 		_jump_slam(dist)
 	elif lives == 2 and dist > 120:
 		_pierce(dist)
@@ -201,3 +221,8 @@ func _on_swirl_area_body_entered(body):
 	if body.name == "FurnaceMan":
 		_deal_damage(10)
 
+func _on_swipe_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(20)
+	elif body.has_method("freeze"):
+		body.freeze()

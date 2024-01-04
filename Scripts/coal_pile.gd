@@ -21,6 +21,8 @@ func damage():
 		$HeatArea2D/Polygon2D.visible = true
 		$HeatArea2D/CollisionShape2D.set_deferred("disabled", false)
 
+func freeze():
+	queue_free()
 
 func _on_heat_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":

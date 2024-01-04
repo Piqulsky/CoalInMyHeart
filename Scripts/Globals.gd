@@ -5,7 +5,7 @@ const HEAT_VALUE = 0.08
 
 signal hit
 
-var temperature := 90.0
+var temperature := 100.0
 var enemies := 0
 
 func _ready():

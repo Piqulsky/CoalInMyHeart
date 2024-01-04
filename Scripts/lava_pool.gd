@@ -13,6 +13,8 @@ func _physics_process(delta):
 		if Globals.temperature < 100:
 			Globals.temperature += Globals.HEAT_VALUE
 
+func freeze():
+	queue_free()
 
 func _on_heat_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
@@ -31,4 +33,5 @@ func _on_heat_area_2d_body_exited(body):
 	
 
 func damage():
-	print("OOF")
+	#Break?
+	pass
