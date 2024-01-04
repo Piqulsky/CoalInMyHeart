@@ -1,7 +1,7 @@
 extends Node
 
 const COLD_VAlUE = 0.01
-const HEAT_VALUE = 0.08
+const HEAT_VALUE = 0.20
 
 signal hit
 

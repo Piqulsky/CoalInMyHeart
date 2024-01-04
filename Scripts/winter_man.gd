@@ -194,7 +194,7 @@ func _on_attack_timer_timeout():
 
 func _on_slam_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(20)
+		_deal_damage(15)
 
 
 func _on_pierce_area_2d_body_entered(body):
@@ -204,22 +204,22 @@ func _on_pierce_area_2d_body_entered(body):
 
 func _on_melee_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(15)
+		_deal_damage(10)
 
 
 func _on_uppercut_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(15)
+		_deal_damage(10)
 
 
 func _on_land_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(25)
+		_deal_damage(5)
 
 
 func _on_swirl_area_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(10)
+		_deal_damage(5)
 
 func _on_swipe_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":

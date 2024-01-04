@@ -231,6 +231,34 @@ tracks/16/keys = {
 "values": [Vector2(1e-05, 1)]
 }
 
+[sub_resource type="Animation" id="Animation_yvr1l"]
+resource_name = "full_swipe"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SwipeArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SwipeArea2D/Polygon2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [Vector2(1, 1), Vector2(1e-05, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_xjoj2"]
 resource_name = "land"
 length = 0.5
@@ -241,7 +269,7 @@ tracks/0/path = NodePath("LandArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5),
+"times": PackedFloat32Array(0, 0.2, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -268,7 +296,7 @@ tracks/0/path = NodePath("MeleeArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.5, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -308,7 +336,7 @@ tracks/1/path = NodePath("PierceArea2D/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3, 3.5),
+"times": PackedFloat32Array(0, 3, 3.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -324,7 +352,7 @@ tracks/0/path = NodePath("SlamArea2D/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 2),
+"times": PackedFloat32Array(0, 1, 1.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -344,7 +372,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_e87on"]
 resource_name = "swirl"
-length = 2.0
+length = 3.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -352,7 +380,7 @@ tracks/0/path = NodePath("SwirlArea/Polygon2D:visible")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 3),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -364,10 +392,10 @@ tracks/1/path = NodePath("SwirlArea/Polygon2D:scale")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1, 1.5, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1.5, 2, 2.5, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1)]
+"values": [Vector2(0.5, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1), Vector2(-1, 1), Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -376,7 +404,7 @@ tracks/2/path = NodePath("SwirlArea/CollisionShape2D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0, 2.9),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -388,10 +416,10 @@ tracks/3/path = NodePath("SwirlArea/CollisionShape2D:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.5, 0.8, 1, 1.2, 1.5, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1.5, 1.8, 2, 2.2, 2.5, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(-40, 12), Vector2(40, 12), Vector2(-12, 12), Vector2(-40, 12), Vector2(-12, 12), Vector2(40, 12), Vector2(-12, 12), Vector2(-40, 12)]
+"values": [Vector2(-12, 12), Vector2(-40, 12), Vector2(40, 12), Vector2(-12, 12), Vector2(-40, 12), Vector2(-12, 12), Vector2(40, 12), Vector2(-12, 12), Vector2(-40, 12)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -400,10 +428,10 @@ tracks/4/path = NodePath("SwirlArea/CollisionShape2D:shape:size")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.5, 0.8, 1, 1.2, 1.5, 1.8, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.5, 1.2, 1.5, 1.8, 2, 2.2, 2.5, 2.8, 3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72)]
+"values": [Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72), Vector2(24, 72), Vector2(80, 72)]
 }
 
 [sub_resource type="Animation" id="Animation_qt37g"]
@@ -427,38 +455,10 @@ tracks/1/path = NodePath("UppercutArea2D/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.5, 1),
+"times": PackedFloat32Array(0, 0.5, 0.9),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
-}
-
-[sub_resource type="Animation" id="Animation_yvr1l"]
-resource_name = "full_swipe"
-length = 1.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("SwipeArea2D/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SwipeArea2D/Polygon2D:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [Vector2(1, 1), Vector2(1e-05, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_e84lf"]
@@ -517,8 +517,8 @@ offset_left = -48.0
 offset_top = -72.0
 offset_right = 48.0
 offset_bottom = -64.0
-step = 2.0
-value = 100.0
+step = 3.0
+value = 99.0
 show_percentage = false
 
 [node name="LifeSprite2D1" type="Sprite2D" parent="."]
@@ -533,6 +533,8 @@ texture = ExtResource("2_4js1s")
 
 [node name="SlamArea2D" type="Area2D" parent="."]
 position = Vector2(0, 40)
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SlamArea2D"]
 shape = SubResource("RectangleShape2D_ogw8l")
@@ -544,6 +546,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-56, -8, 56, -8, 56, 8, -56, 8)
 
 [node name="PierceArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PierceArea2D"]
 position = Vector2(-60, 0)
@@ -556,6 +560,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-56, -48, 0, -48, 0, 48, -56, 48)
 
 [node name="MeleeArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeArea2D"]
 position = Vector2(-52, 0)
@@ -568,6 +574,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-104, -48, 0, -48, 0, 48, -104, 48)
 
 [node name="UppercutArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UppercutArea2D"]
 position = Vector2(-52, -8)
@@ -581,6 +589,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-104, -304, -104, 0, 0, 0, 0, -304)
 
 [node name="LandArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LandArea2D"]
 position = Vector2(-80, 16)
@@ -594,6 +604,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-160, -64, -160, 0, 0, 0, 0, -64)
 
 [node name="SwirlArea" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwirlArea"]
 position = Vector2(-40, 12)
@@ -607,6 +619,8 @@ color = Color(0.917647, 0, 0.227451, 0.588235)
 polygon = PackedVector2Array(-80, -72, -80, 0, 0, 0, 0, -72)
 
 [node name="SwipeArea2D" type="Area2D" parent="."]
+collision_layer = 3
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwipeArea2D"]
 position = Vector2(-72, 8)

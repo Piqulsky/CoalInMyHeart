@@ -8,7 +8,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if heating:
 		if Globals.temperature < 100:
 			Globals.temperature += Globals.HEAT_VALUE
@@ -16,7 +16,7 @@ func _process(delta):
 func damage():
 	if $Sprite2D.frame < 4:
 		$Sprite2D.frame += 1
-		Globals.temperature -= 10
+		Globals.temperature -= 5
 	if $Sprite2D.frame == 4:
 		$HeatArea2D/Polygon2D.visible = true
 		$HeatArea2D/CollisionShape2D.set_deferred("disabled", false)

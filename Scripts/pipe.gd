@@ -9,7 +9,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _physics_process(delta):
 	if Input.is_action_just_pressed("jump") and not unlocked:
 		$AnimationPlayer.stop()
 		var body = get_node("/root/MainScene/FurnaceMan")
