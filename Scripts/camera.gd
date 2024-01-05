@@ -4,6 +4,7 @@ extends Camera2D
 
 func _physics_process(delta):
 	position.x = follow.position.x
+	position.y = follow.position.y - 64
 
 
 func _on_level_doorway_area_2d_body_entered(body):

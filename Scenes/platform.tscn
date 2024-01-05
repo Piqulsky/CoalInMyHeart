@@ -1,31 +1,27 @@
 [gd_scene load_steps=9 format=3 uid="uid://isbred21smr2"]
 
 [ext_resource type="Script" path="res://Scripts/platform.gd" id="1_eo027"]
-[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.png" id="1_hty4m"]
+[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="1_hty4m"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c2ny1"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lwkfa"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_55gi0"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mmckb"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
-source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4j44"]
 texture = ExtResource("1_hty4m")
@@ -72,7 +68,7 @@ sources/1 = SubResource("TileSetAtlasSource_o4j44")
 [node name="Platform" type="Node2D"]
 script = ExtResource("1_eo027")
 direction = 1
-range = 50
+range = 64
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_hpg3r")

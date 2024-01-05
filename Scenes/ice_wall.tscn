@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cj7se7ci3q13u"]
+
+[ext_resource type="Script" path="res://Scenes/ice_wall.gd" id="1_d7t3a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_db3v0"]
+size = Vector2(16, 32)
+
+[node name="IceWall" type="StaticBody2D" groups=["enemies"]]
+script = ExtResource("1_d7t3a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_db3v0")
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+color = Color(0.784314, 1, 1, 1)
+polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)

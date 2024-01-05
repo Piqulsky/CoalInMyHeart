@@ -175,7 +175,7 @@ position = Vector2(32, 24)
 [node name="CollisionShape2D" type="CollisionPolygon2D" parent="HeatArea2D"]
 position = Vector2(246, 250)
 rotation = 0.785398
-polygon = PackedVector2Array(362.039, -25.4558, -350.018, -3.53559, -347.189, 3.53548, 277.186, 59.397)
+polygon = PackedVector2Array(107.48, -42.4264, -350.018, -3.53559, -347.189, 3.53548, 107.48, 48.0833, 135.765, 19.799, 135.765, -14.1421)
 disabled = true
 
 [node name="Polygon2D" type="Polygon2D" parent="HeatArea2D"]
@@ -183,7 +183,7 @@ visible = false
 position = Vector2(246, 250)
 rotation = 0.785398
 color = Color(0.831373, 0.27451, 0, 0.223529)
-polygon = PackedVector2Array(362.039, -25.4558, -350.018, -3.53559, -347.189, 3.53548, 277.186, 59.397)
+polygon = PackedVector2Array(107.48, -42.4264, -350.018, -3.53559, -347.189, 3.53548, 107.48, 48.0833, 135.765, 19.799, 135.765, -14.1421)
 
 [connection signal="body_entered" from="ChainPolygon2D/HandleArea2D" to="." method="_on_handle_area_2d_body_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
