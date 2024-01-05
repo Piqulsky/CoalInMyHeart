@@ -3,8 +3,9 @@
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="1_0glp7"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="1_fywnp"]
 [ext_resource type="PackedScene" uid="uid://cau378qvo1l4o" path="res://Scenes/game_over.tscn" id="3_00d4x"]
-[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="3_unywd"]
+[ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.png" id="3_unywd"]
 [ext_resource type="PackedScene" uid="uid://dlr50bagndlfl" path="res://Scenes/gui.tscn" id="4_ukmvb"]
+[ext_resource type="PackedScene" uid="uid://isbred21smr2" path="res://Scenes/platform.tscn" id="5_fud1k"]
 [ext_resource type="PackedScene" uid="uid://cjklyky3j6wxv" path="res://Scenes/snowflake_spawner.tscn" id="6_5h032"]
 [ext_resource type="PackedScene" uid="uid://d23aabwtkk7sa" path="res://Scenes/lava_pool.tscn" id="7_5s0wf"]
 [ext_resource type="PackedScene" uid="uid://d1q0yhjtqyqjb" path="res://Scenes/coal_pile.tscn" id="8_kr1bq"]
@@ -15,21 +16,25 @@
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_lwkfa"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_55gi0"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_mmckb"]
 vertices = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)])
+source_geometry_group_name = &"navigation_polygon_source_group"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_o4j44"]
 texture = ExtResource("3_unywd")
@@ -113,6 +118,11 @@ layer_0/tile_data = PackedInt32Array(65530, 1, 0, 131066, 1, 0, 196602, 131073, 
 position = Vector2(4624, -64)
 scale = Vector2(40.625, 448)
 texture = SubResource("GradientTexture1D_e32w2")
+
+[node name="Platforms" type="Node2D" parent="."]
+
+[node name="Platform" parent="Platforms" instance=ExtResource("5_fud1k")]
+position = Vector2(-64, 0)
 
 [node name="FurnaceMan" parent="." instance=ExtResource("1_0glp7")]
 
