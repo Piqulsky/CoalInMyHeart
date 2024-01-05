@@ -77,7 +77,7 @@ func _on_animation_player_animation_finished(anim_name):
 func _deal_damage(quantity):
 	var man = get_node("/root/BossScene/FurnaceMan") as CharacterBody2D
 	man.velocity.y = KNOCKUP_VELOCITY
-	Globals.temperature -= quantity
+	Globals.hit.emit(quantity)
 
 func _jump_slam(dist):
 	movementProgress = 0.0
