@@ -13,5 +13,5 @@ func _process(delta):
 
 func _on_body_entered(body):
 	if body.name == "FurnaceMan":
-		Globals.hit.emit(20)
+		Globals.hit.emit(15)
 		queue_free()

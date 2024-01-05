@@ -27,7 +27,6 @@ func _physics_process(delta):
 		DIRECTION.VERTICAL:
 			var goal = Vector2(position.x, startPos.y + (multiplier * range))
 			position.y += SPEED * delta * multiplier
-			print(position, goal)
 			if position.distance_to(goal) < 4:
 				multiplier *= -1
 		DIRECTION.DIAGONAL:
