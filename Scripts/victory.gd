@@ -7,17 +7,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta):
-	if Globals.temperature < 0:
-		get_node("/root/" + get_tree().get_current_scene().get_name() + "/FurnaceMan").visible = false
-		visible = true
-
-
-func _on_restart_texture_button_button_down():
-	visible = false
-	Globals.temperature = 100.0
-	Globals.enemies = 0
-	get_tree().change_scene_to_file("res://Scenes/main_scene.tscn")
+func _process(delta):
+	pass
 
 
 func _on_exit_texture_button_button_down():

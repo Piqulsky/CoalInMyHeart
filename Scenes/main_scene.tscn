@@ -640,10 +640,6 @@ player = NodePath("../../../FurnaceMan")
 
 [node name="SnowflakeSpawners" type="Node2D" parent="Spawners"]
 
-[node name="SnowflakeSpawner" parent="Spawners/SnowflakeSpawners" node_paths=PackedStringArray("player") instance=ExtResource("6_5h032")]
-position = Vector2(672, -304)
-player = NodePath("../../../FurnaceMan")
-
 [node name="SnowflakeSpawner2" parent="Spawners/SnowflakeSpawners" node_paths=PackedStringArray("player") instance=ExtResource("6_5h032")]
 position = Vector2(672, 48)
 player = NodePath("../../../FurnaceMan")
@@ -890,6 +886,7 @@ shape = SubResource("RectangleShape2D_2g1cm")
 [node name="FurnaceMan" parent="." instance=ExtResource("1_0glp7")]
 
 [node name="GradientSprite2D" type="Sprite2D" parent="."]
+visible = false
 position = Vector2(4640, 256)
 scale = Vector2(40.75, 1536)
 texture = SubResource("GradientTexture1D_e32w2")

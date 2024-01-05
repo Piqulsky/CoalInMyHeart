@@ -54,6 +54,7 @@ func damage():
 		lives -= 1
 		if lives < 0:
 			queue_free()
+			get_parent().find_child("Camera2D").find_child("Victory").visible = true
 		else:
 			get_node("LifeSprite2D" + str(lives+1)).visible = false
 			pg.value = 100
