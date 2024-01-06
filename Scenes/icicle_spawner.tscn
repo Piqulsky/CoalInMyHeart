@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://hsl770w7k4l0"]
+[gd_scene load_steps=5 format=3 uid="uid://hsl770w7k4l0"]
 
 [ext_resource type="Script" path="res://Scripts/icicle_spawner.gd" id="1_ntp4d"]
 [ext_resource type="Texture2D" uid="uid://dkiynb8d6xdx2" path="res://Textures/icicle-spawner.PNG" id="2_vpcbg"]
+[ext_resource type="Texture2D" uid="uid://bn8mq0ccddbfe" path="res://Textures/smallhp_outer.png" id="3_lhe7m"]
+[ext_resource type="Texture2D" uid="uid://c58dukfpsxkk3" path="res://Textures/smallhp_fill.png" id="4_otxof"]
 
 [node name="IcicleSpawner" type="StaticBody2D" groups=["enemies"]]
 script = ExtResource("1_ntp4d")
@@ -18,17 +20,18 @@ polygon = PackedVector2Array(-16, -16, 16, -16, 16, -8, 8, 8, -8, 8, -16, -8)
 wait_time = 8.0
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_vpcbg")
+
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -16.0
 offset_top = 16.0
 offset_right = 16.0
 offset_bottom = 24.0
 step = 25.0
 value = 100.0
-show_percentage = false
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_vpcbg")
+texture_over = ExtResource("3_lhe7m")
+texture_progress = ExtResource("4_otxof")
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

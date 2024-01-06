@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cjklyky3j6wxv"]
+[gd_scene load_steps=5 format=3 uid="uid://cjklyky3j6wxv"]
 
 [ext_resource type="Script" path="res://Scripts/snowflake_spawner.gd" id="1_0ca3p"]
 [ext_resource type="Texture2D" uid="uid://ctcu2ydl3h0lj" path="res://Textures/snowflake-spawner.PNG" id="2_6cbe0"]
+[ext_resource type="Texture2D" uid="uid://bn8mq0ccddbfe" path="res://Textures/smallhp_outer.png" id="2_htqic"]
+[ext_resource type="Texture2D" uid="uid://c58dukfpsxkk3" path="res://Textures/smallhp_fill.png" id="3_lf7kc"]
 
 [node name="SnowflakeSpawner" type="StaticBody2D" groups=["enemies"]]
 script = ExtResource("1_0ca3p")
@@ -18,14 +20,15 @@ polygon = PackedVector2Array(-8, -16, 8, -16, 16, 0, 16, 16, -16, 16, -16, 0)
 wait_time = 5.0
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
+[node name="ProgressBar" type="TextureProgressBar" parent="."]
 offset_left = -16.0
 offset_top = -24.0
 offset_right = 16.0
 offset_bottom = -16.0
 step = 25.0
 value = 100.0
-show_percentage = false
+texture_over = ExtResource("2_htqic")
+texture_progress = ExtResource("3_lf7kc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.5, 0.5)
