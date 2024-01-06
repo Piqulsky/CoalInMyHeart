@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://cuyxmdgllbmxn"]
+[gd_scene load_steps=5 format=3 uid="uid://cuyxmdgllbmxn"]
 
-[ext_resource type="Texture2D" uid="uid://imdnicu6cy6" path="res://Textures/3.png" id="1_5bofe"]
 [ext_resource type="Script" path="res://Scripts/victory.gd" id="1_px2e2"]
 [ext_resource type="Texture2D" uid="uid://3hesqxlh3d47" path="res://Textures/9.png" id="2_5vq8d"]
+[ext_resource type="Texture2D" uid="uid://cy4vxh12tnfyy" path="res://Textures/button_exit.png" id="2_k8snr"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrj41"]
+font_size = 32
 
 [node name="Victory" type="Control"]
 layout_mode = 3
@@ -14,23 +17,37 @@ grow_vertical = 2
 script = ExtResource("1_px2e2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
 color = Color(0, 0, 0, 0.392157)
 
 [node name="ExitTextureButton" type="TextureButton" parent="."]
-offset_left = 192.0
-offset_top = 384.0
-offset_right = 320.0
-offset_bottom = 448.0
-texture_normal = ExtResource("1_5bofe")
+layout_mode = 0
+offset_left = 368.0
+offset_top = 424.0
+offset_right = 496.0
+offset_bottom = 488.0
+texture_normal = ExtResource("2_k8snr")
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
 offset_left = 192.0
 offset_top = 64.0
 offset_right = 320.0
 offset_bottom = 192.0
 texture = ExtResource("2_5vq8d")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 512.0
+offset_bottom = 312.0
+text = "VICTORY
+IT IS WARM AGAIN
+"
+label_settings = SubResource("LabelSettings_qrj41")
+horizontal_alignment = 1
 
 [connection signal="button_down" from="ExitTextureButton" to="." method="_on_exit_texture_button_button_down"]

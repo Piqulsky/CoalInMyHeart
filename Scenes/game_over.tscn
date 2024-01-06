@@ -1,9 +1,12 @@
-[gd_scene load_steps=5 format=3 uid="uid://cau378qvo1l4o"]
+[gd_scene load_steps=6 format=3 uid="uid://cau378qvo1l4o"]
 
 [ext_resource type="Texture2D" uid="uid://brn7d53t26st8" path="res://Textures/1.png" id="1_6ge4u"]
 [ext_resource type="Script" path="res://Scripts/game_over.gd" id="1_aiqxf"]
-[ext_resource type="Texture2D" uid="uid://ccd6byf0vtox1" path="res://Textures/2.png" id="1_wuvsc"]
-[ext_resource type="Texture2D" uid="uid://imdnicu6cy6" path="res://Textures/3.png" id="2_vsndn"]
+[ext_resource type="Texture2D" uid="uid://jur5yu3qkrum" path="res://Textures/button_reset.png" id="2_b623i"]
+[ext_resource type="Texture2D" uid="uid://cy4vxh12tnfyy" path="res://Textures/button_exit.png" id="3_c31uf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ioq3k"]
+font_size = 36
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -23,19 +26,19 @@ color = Color(0, 0, 0, 0.392157)
 [node name="RestartTextureButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 256.0
+offset_top = 344.0
 offset_right = 320.0
-offset_bottom = 320.0
-texture_normal = ExtResource("1_wuvsc")
+offset_bottom = 408.0
+texture_normal = ExtResource("2_b623i")
 stretch_mode = 0
 
 [node name="ExitTextureButton" type="TextureButton" parent="."]
 layout_mode = 0
 offset_left = 192.0
-offset_top = 384.0
+offset_top = 432.0
 offset_right = 320.0
-offset_bottom = 448.0
-texture_normal = ExtResource("2_vsndn")
+offset_bottom = 496.0
+texture_normal = ExtResource("3_c31uf")
 stretch_mode = 0
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -45,6 +48,15 @@ offset_top = 64.0
 offset_right = 320.0
 offset_bottom = 192.0
 texture = ExtResource("1_6ge4u")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_top = 208.0
+offset_right = 512.0
+offset_bottom = 261.0
+text = "Game Over"
+label_settings = SubResource("LabelSettings_ioq3k")
+horizontal_alignment = 1
 
 [connection signal="button_down" from="RestartTextureButton" to="." method="_on_restart_texture_button_button_down"]
 [connection signal="button_down" from="ExitTextureButton" to="." method="_on_exit_texture_button_button_down"]

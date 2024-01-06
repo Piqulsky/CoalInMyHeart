@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://c11346624i51h"]
+[gd_scene load_steps=25 format=3 uid="uid://c11346624i51h"]
 
 [ext_resource type="PackedScene" uid="uid://1ewh8us7ned8" path="res://Scenes/furnace_man.tscn" id="1_0glp7"]
 [ext_resource type="Script" path="res://Scripts/camera.gd" id="1_fywnp"]
@@ -75,6 +75,12 @@ tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
 navigation_layer_0/layers = 1
 sources/1 = SubResource("TileSetAtlasSource_o4j44")
+
+[sub_resource type="LabelSettings" id="LabelSettings_8pjtt"]
+font_size = 12
+
+[sub_resource type="LabelSettings" id="LabelSettings_okpgm"]
+font_size = 10
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2g1cm"]
 size = Vector2(128, 40)
@@ -262,6 +268,91 @@ position = Vector2(2008, 960)
 position = Vector2(1088, 672)
 
 [node name="Tips" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Tips"]
+offset_left = -136.0
+offset_top = -64.0
+offset_right = 206.0
+offset_bottom = 16.0
+text = "Furnace-man! You need to fix the heating system!
+Move using A and D, jump using Space.
+There will be enemies, attack them with left mouse button.
+It's freezing out here, don't stay out of heat too long.
+The enemies are also cold, so avoid touching them."
+label_settings = SubResource("LabelSettings_8pjtt")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="Tips"]
+offset_left = 88.0
+offset_top = 74.0
+offset_right = 242.0
+offset_bottom = 108.0
+text = "This is also cold, 
+avoid the icicle spikes."
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="Tips"]
+offset_left = -168.0
+offset_top = -128.0
+offset_right = -14.0
+offset_bottom = -94.0
+text = "It's heating pipe, grab it
+and open it."
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label4" type="Label" parent="Tips"]
+offset_left = 336.0
+offset_top = 16.0
+offset_right = 490.0
+offset_bottom = 50.0
+text = "Look! It's lava pool,
+it will warm you up."
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label7" type="Label" parent="Tips"]
+offset_left = 568.0
+offset_top = -32.0
+offset_right = 735.0
+offset_bottom = 19.0
+text = "Watch out! It's snow pile,
+Snowflake-men will come out of it!
+Melt it with your attacks"
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label8" type="Label" parent="Tips"]
+offset_left = 760.0
+offset_top = -216.0
+offset_right = 933.0
+offset_bottom = -165.0
+text = "Careful! These are hanging icicles,
+Icicle-men will fall down from them!
+Melt them with your attacks"
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label5" type="Label" parent="Tips"]
+offset_left = 96.0
+offset_top = -244.0
+offset_right = 250.0
+offset_bottom = -210.0
+text = "Looks like this ice can
+be broken to pass through"
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
+
+[node name="Label6" type="Label" parent="Tips"]
+offset_left = 552.0
+offset_top = -400.0
+offset_right = 768.0
+offset_bottom = -366.0
+text = "Attack this coal pile to activate its heating,
+but watch out: It will take some of your heat!"
+label_settings = SubResource("LabelSettings_okpgm")
+horizontal_alignment = 1
 
 [node name="Platforms" type="Node2D" parent="."]
 
@@ -886,7 +977,6 @@ shape = SubResource("RectangleShape2D_2g1cm")
 [node name="FurnaceMan" parent="." instance=ExtResource("1_0glp7")]
 
 [node name="GradientSprite2D" type="Sprite2D" parent="."]
-visible = false
 position = Vector2(4640, 256)
 scale = Vector2(40.75, 1536)
 texture = SubResource("GradientTexture1D_e32w2")

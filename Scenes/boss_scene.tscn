@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cbsukyor6t4f8"]
+[gd_scene load_steps=18 format=3 uid="uid://cbsukyor6t4f8"]
 
 [ext_resource type="PackedScene" uid="uid://dlr50bagndlfl" path="res://Scenes/gui.tscn" id="1_dluco"]
 [ext_resource type="Texture2D" uid="uid://bifyx64mb137k" path="res://Textures/tilemap.PNG" id="2_31hdn"]
@@ -82,6 +82,9 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 fill_to = Vector2(1.25, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_lohwe"]
+font_size = 12
+
 [node name="BossScene" type="Node2D"]
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -126,13 +129,24 @@ position = Vector2(168, 48)
 player = NodePath("../FurnaceMan")
 heatSources = NodePath("../BossSources")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -176.0
+offset_top = -248.0
+offset_right = 166.0
+offset_bottom = -148.0
+text = "It's Winter-man! He has been causing all that cold.
+If you defeat him, the heating system will be fixed.
+Good luck!"
+label_settings = SubResource("LabelSettings_lohwe")
+horizontal_alignment = 1
+
 [node name="BossSources" type="Node2D" parent="." node_paths=PackedStringArray("boss")]
 position = Vector2(0, 96)
 script = ExtResource("6_mgnlb")
 boss = NodePath("../WinterMan")
 
 [node name="SpawnTimer" type="Timer" parent="BossSources"]
-wait_time = 10.0
+wait_time = 15.0
 autostart = true
 
 [node name="CoalPile" parent="BossSources" instance=ExtResource("7_3jr5e")]
