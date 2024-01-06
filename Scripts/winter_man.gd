@@ -32,7 +32,6 @@ func _physics_process(delta):
 				$SwordHolder.scale.x = 1
 			else:
 				$SwordHolder.scale.x = -1
-		print(direction)
 		velocity.x = direction.x * SPEED
 
 		move_and_slide()

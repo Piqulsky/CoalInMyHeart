@@ -1,7 +1,7 @@
 [gd_scene load_steps=19 format=3 uid="uid://bulhmeaip8gk0"]
 
 [ext_resource type="Script" path="res://Scripts/winter_man.gd" id="1_ag4mq"]
-[ext_resource type="Texture2D" uid="uid://rla0qnjpxgqk" path="res://Textures/6.png" id="2_4js1s"]
+[ext_resource type="Texture2D" uid="uid://b7ujt421whbhh" path="res://Textures/life.png" id="2_dsxw5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ogw8l"]
 size = Vector2(176, 16)
@@ -741,13 +741,11 @@ show_percentage = false
 
 [node name="LifeSprite2D1" type="Sprite2D" parent="."]
 position = Vector2(-8, -80)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_4js1s")
+texture = ExtResource("2_dsxw5")
 
 [node name="LifeSprite2D2" type="Sprite2D" parent="."]
 position = Vector2(8, -80)
-scale = Vector2(0.125, 0.125)
-texture = ExtResource("2_4js1s")
+texture = ExtResource("2_dsxw5")
 
 [node name="SlamArea2D" type="Area2D" parent="."]
 position = Vector2(0, 40)
@@ -865,7 +863,6 @@ autostart = true
 [node name="SwordPolygon2D" type="Polygon2D" parent="SwordHolder"]
 position = Vector2(-7.62939e-06, 8)
 rotation = 1.91986
-scale = Vector2(1, 1)
 color = Color(0.392157, 1, 1, 1)
 polygon = PackedVector2Array(-8, 0, -7.99999, -72, 8.00001, -72, 8, 0)
 
