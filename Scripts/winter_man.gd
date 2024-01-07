@@ -29,9 +29,9 @@ func _physics_process(delta):
 		var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
 		if animPlayer.current_animation != "swirl" and not animPlayer.is_playing():
 			if direction.x < 0:
-				$SwordHolder.scale.x = 1
+				$WinterManSprite2D.scale.x = 1
 			else:
-				$SwordHolder.scale.x = -1
+				$WinterManSprite2D.scale.x = -1
 		velocity.x = direction.x * SPEED
 
 		move_and_slide()
@@ -62,6 +62,8 @@ func damage():
 			get_parent().find_child("Camera2D").find_child("Victory").visible = true
 		else:
 			get_node("LifeSprite2D" + str(lives+1)).visible = false
+			if get_node("LifeSprite2D" + str(lives)):
+				get_node("LifeSprite2D" + str(lives)).position.x = 0
 			pg.value = 100
 		
 
@@ -70,7 +72,6 @@ func _makepath():
 		$NavigationAgent2D.target_position = heatSources.get_child(1).global_position
 	else:
 		$NavigationAgent2D.target_position = player.global_position
-	print($NavigationAgent2D.target_position)
 
 func _on_path_timer_timeout():
 	_makepath()
@@ -95,8 +96,10 @@ func _jump_slam(dist):
 	movementStart = global_position
 	if global_position.x > player.global_position.x:
 		movementEdit = Vector2(global_position.x - (dist/2), -200)
+		$WinterManSprite2D.scale.x = 1
 	else:
 		movementEdit = Vector2(global_position.x + (dist/2), -200)
+		$WinterManSprite2D.scale.x = -1
 	movementEnd = Vector2(player.global_position.x, global_position.y)
 
 func _pierce(dist):
@@ -110,12 +113,12 @@ func _pierce(dist):
 		movementEdit = Vector2(global_position.x - (dist/2), global_position.y)
 		movementEnd = Vector2(global_position.x - 224, global_position.y)
 		$PierceArea2D.scale.x = 1
-		$SwordHolder.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
 	else:
 		movementEdit = Vector2(global_position.x + (dist/2), global_position.y)
 		movementEnd = Vector2(global_position.x + 224, global_position.y)
 		$PierceArea2D.scale.x = -1
-		$SwordHolder.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
 
 func _melee():
 	movementProgress = 1.0
@@ -124,10 +127,10 @@ func _melee():
 	pause = true
 	if global_position.x > player.global_position.x:
 		$MeleeArea2D.scale.x = 1
-		$SwordHolder.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
 	else:
 		$MeleeArea2D.scale.x = -1
-		$SwordHolder.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
 	animPlayer.play("melee")
 
 func _uppercut():
@@ -141,10 +144,10 @@ func _uppercut():
 	movementEnd = Vector2(global_position.x, global_position.y - 192)
 	if global_position.x > player.global_position.x:
 		$UppercutArea2D.scale.x = 1
-		$SwordHolder.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
 	else:
 		$UppercutArea2D.scale.x = -1
-		$SwordHolder.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
 	$AttackTimer.start(1.0)
 
 func _land(dist):
@@ -158,19 +161,19 @@ func _land(dist):
 	movementEdit = Vector2((movementStart.x + movementEnd.x)/2, (movementStart.y + movementEnd.y)/2)
 	if global_position.x > player.global_position.x:
 		$LandArea2D.scale.x = 1
-		$SwordHolder.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
 	else:
 		$LandArea2D.scale.x = -1
-		$SwordHolder.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
 	$AttackTimer.start(1.0)
 
 func _swirl():
 	if global_position.x > player.global_position.x:
 		$SwirlArea.scale.x = -1
-		$SwordHolder.scale.x = -1
+		$WinterManSprite2D.scale.x = 1
 	else:
 		$SwirlArea.scale.x = 1
-		$SwordHolder.scale.x = 1
+		$WinterManSprite2D.scale.x = -1
 	animPlayer.play("swirl") 
 
 func _kill_heat():
@@ -182,13 +185,47 @@ func _kill_heat():
 	pause = true
 	if global_position.x > sourceLocation.x:
 		$SwipeArea2D.scale.x = 1
-		$SwordHolder.scale.x = 1
 	else:
 		$SwipeArea2D.scale.x = -1
-		$SwordHolder.scale.x = -1
 	animPlayer.play("full_swipe")
 
+func _on_proximity_area_2d_body_entered(body):
+	if body.name == "FurnaceMan" and not animPlayer.is_playing():
+		movementProgress = 1.0
+		progressMultiplier = 1.0
+		movementDelay = 0.0
+		pause = true
+		animPlayer.play("blow")
+
+func _surge():
+	movementProgress = 1.0
+	progressMultiplier = 1.0
+	movementDelay = 0.0
+	pause = true
+	if global_position.x > player.global_position.x:
+		$SurgeArea2D.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
+	else:
+		$SurgeArea2D.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
+	animPlayer.play("surge")
+
+func _sword_throw():
+	movementProgress = 1.0
+	progressMultiplier = 1.0
+	movementDelay = 0.0
+	pause = true
+	if global_position.x > player.global_position.x:
+		$ThrowArea2D.scale.x = 1
+		$WinterManSprite2D.scale.x = 1
+	else:
+		$ThrowArea2D.scale.x = -1
+		$WinterManSprite2D.scale.x = -1
+	animPlayer.play("throw")
+
 func _on_attack_timer_timeout():
+	if pause:
+		return
 	if $AttackTimer.wait_time != 3.5:
 		$AttackTimer.start(3.5)
 	var dist = global_position.distance_to(player.global_position)
@@ -201,14 +238,18 @@ func _on_attack_timer_timeout():
 		_jump_slam(dist)
 	elif lives == 2 and dist > 120:
 		_pierce(dist)
-	elif lives == 2 and dist < 90:
+	elif lives == 2 and dist < 120:
 		_melee()
-	elif lives == 1 and dist < 90 and on_floor:
+	elif lives == 1 and dist < 120 and on_floor:
 		_uppercut()
+	elif lives == 1 and dist > 120 and on_floor:
+		_surge()
 	elif lives == 1 and not on_floor:
 		_land(dist)
 	elif lives == 0 and dist < 90:
 		_swirl()
+	elif lives == 0 and dist > 90:
+		_sword_throw()
 
 
 func _on_slam_area_2d_body_entered(body):
@@ -238,10 +279,32 @@ func _on_land_area_2d_body_entered(body):
 
 func _on_swirl_area_body_entered(body):
 	if body.name == "FurnaceMan":
-		_deal_damage(5)
+		_deal_damage(10)
 
 func _on_swipe_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
 		_deal_damage(20)
 	elif body.has_method("freeze"):
 		body.freeze()
+
+func _on_blow_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(5)
+	elif body.has_method("freeze"):
+		body.freeze()
+
+func _on_throw_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(15)
+	elif body.has_method("freeze"):
+		body.freeze()
+
+func _on_surge_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(15)
+	elif body.has_method("freeze"):
+		body.freeze()
+
+func _on_sword_area_2d_body_entered(body):
+	if body.name == "FurnaceMan":
+		_deal_damage(5)
