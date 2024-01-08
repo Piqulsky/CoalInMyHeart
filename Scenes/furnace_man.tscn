@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://1ewh8us7ned8"]
+[gd_scene load_steps=18 format=3 uid="uid://1ewh8us7ned8"]
 
 [ext_resource type="Script" path="res://Scripts/furnace_man.gd" id="1_v1i71"]
 [ext_resource type="Texture2D" uid="uid://i5dtgam81t23" path="res://Textures/furnace-man.PNG" id="2_s0iph"]
+[ext_resource type="Texture2D" uid="uid://bwx08a4stxy4r" path="res://Textures/temperature_bar_under.PNG" id="3_hk0xt"]
 [ext_resource type="Script" path="res://Scripts/landiing_ray.gd" id="3_m0gf6"]
+[ext_resource type="Texture2D" uid="uid://xyvpjbn2y7ro" path="res://Textures/temperature_bar_fill.PNG" id="4_os8w5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jpkic"]
 size = Vector2(5.65686, 38.5216)
@@ -327,6 +329,15 @@ script = ExtResource("1_v1i71")
 [node name="CharacterSprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_s0iph")
 hframes = 12
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CharacterSprite2D"]
+offset_left = -21.0
+offset_top = -19.0
+offset_right = 491.0
+offset_bottom = 45.0
+scale = Vector2(0.063, 0.063)
+texture_under = ExtResource("3_hk0xt")
+texture_progress = ExtResource("4_os8w5")
 
 [node name="SwordArea2D" type="Area2D" parent="CharacterSprite2D"]
 collision_layer = 3

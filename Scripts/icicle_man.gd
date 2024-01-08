@@ -23,7 +23,10 @@ func _physics_process(delta):
 			direction = 1
 			$Sprite2D.scale.x = -1
 	
-	velocity.x = direction * SPEED
+	if not $AnimationPlayer.is_playing():
+		velocity.x = direction * SPEED
+	else:
+		velocity.x = 0
 	
 	if not is_on_floor():
 		velocity.y += gravity*delta
@@ -31,12 +34,16 @@ func _physics_process(delta):
 	move_and_slide()
 
 func damage():
-	queue_free()
+	$AnimationPlayer.play("death")
 	Globals.enemies -= 1
 
 
 func _on_damage_area_2d_body_entered(body):
 	if body.name == "FurnaceMan":
 		Globals.hit.emit(5)
-		queue_free()
+		$AnimationPlayer.play("death")
 		Globals.enemies -= 1
+
+
+func _on_animation_player_animation_finished(anim_name):
+	queue_free()

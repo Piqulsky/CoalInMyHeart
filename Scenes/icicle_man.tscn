@@ -1,13 +1,75 @@
-[gd_scene load_steps=5 format=3 uid="uid://d4mf7ox1opw40"]
+[gd_scene load_steps=8 format=3 uid="uid://d4mf7ox1opw40"]
 
 [ext_resource type="Script" path="res://Scripts/icicle_man.gd" id="1_1n7yu"]
-[ext_resource type="Texture2D" uid="uid://ba6e28rhhnchl" path="res://Textures/icicle-man.PNG" id="2_ddyfs"]
+[ext_resource type="Texture2D" uid="uid://dgeui7y3hmnah" path="res://Textures/icicle_man.PNG" id="2_elm7f"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6o614"]
 size = Vector2(26.6667, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m28br"]
-size = Vector2(33.3333, 61.6667)
+size = Vector2(33.3333, 65)
+
+[sub_resource type="Animation" id="Animation_hggn0"]
+resource_name = "death"
+length = 0.8
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1g8cv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DamageArea2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_772q5"]
+_data = {
+"RESET": SubResource("Animation_1g8cv"),
+"death": SubResource("Animation_hggn0")
+}
 
 [node name="IcicleMan" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.6, 0.6)
@@ -22,12 +84,19 @@ position = Vector2(-4.96705e-07, 4)
 shape = SubResource("RectangleShape2D_6o614")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_ddyfs")
+texture = ExtResource("2_elm7f")
+hframes = 5
 
 [node name="DamageArea2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageArea2D"]
-position = Vector2(-4.96705e-07, 0.833334)
+position = Vector2(-4.96705e-07, 2.5)
 shape = SubResource("RectangleShape2D_m28br")
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_772q5")
+}
+
 [connection signal="body_entered" from="DamageArea2D" to="." method="_on_damage_area_2d_body_entered"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

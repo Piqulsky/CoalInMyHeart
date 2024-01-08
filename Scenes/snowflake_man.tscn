@@ -1,10 +1,71 @@
-[gd_scene load_steps=4 format=3 uid="uid://dp7s1dqw0syje"]
+[gd_scene load_steps=7 format=3 uid="uid://dp7s1dqw0syje"]
 
 [ext_resource type="Script" path="res://Scripts/snowflake_man.gd" id="1_adpok"]
-[ext_resource type="Texture2D" uid="uid://tj3po5cii7xv" path="res://Textures/snowflake-man.PNG" id="2_con8d"]
+[ext_resource type="Texture2D" uid="uid://dgn6dcvgkuopy" path="res://Textures/snowflake_man.PNG" id="2_ahqtb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_m4n3w"]
 radius = 28.0
+
+[sub_resource type="Animation" id="Animation_n2e70"]
+resource_name = "death"
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4]
+}
+
+[sub_resource type="Animation" id="Animation_cwa7y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ev1i7"]
+_data = {
+"RESET": SubResource("Animation_cwa7y"),
+"death": SubResource("Animation_n2e70")
+}
 
 [node name="SnowflakeMan" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(0.5, 0.5)
@@ -26,6 +87,13 @@ wait_time = 0.5
 autostart = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_con8d")
+texture = ExtResource("2_ahqtb")
+hframes = 5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ev1i7")
+}
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

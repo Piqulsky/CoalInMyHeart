@@ -15,18 +15,20 @@ func _physics_process(delta):
 		Globals.enemies -= 1
 	
 	var direction = to_local($NavigationAgent2D.get_next_path_position()).normalized()
-	velocity = direction * SPEED
+	if not $AnimationPlayer.is_playing():
+		velocity = direction * SPEED
+	
 	
 	if move_and_slide():
 		var collision = move_and_collide(velocity*delta)
 		if collision:
 			if collision.get_collider().get_name() == "FurnaceMan":
 				Globals.hit.emit(5)
-				queue_free()
+				$AnimationPlayer.play("death")
 				Globals.enemies -= 1
 
 func damage():
-	queue_free()
+	$AnimationPlayer.play("death")
 	Globals.enemies -= 1
 
 func _make_path():
@@ -35,3 +37,7 @@ func _make_path():
 
 func _on_timer_timeout():
 	_make_path()
+
+
+func _on_animation_player_animation_finished(anim_name):
+	queue_free()

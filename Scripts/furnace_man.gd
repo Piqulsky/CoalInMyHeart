@@ -36,6 +36,12 @@ func _physics_process(delta):
 		
 		if Input.is_action_pressed("jump") and velocity.x == 0 and is_on_floor():
 			jumpHeat += delta
+			$CharacterSprite2D/TextureProgressBar.visible = true
+		
+		if jumpHeat > 0.0:
+			$CharacterSprite2D/TextureProgressBar.value = jumpHeat*100
+		else:
+			$CharacterSprite2D/TextureProgressBar.visible = false
 		
 		if Input.is_action_just_released("jump") and is_on_floor():
 			velocity.y = JUMP_VELOCITY
@@ -43,6 +49,8 @@ func _physics_process(delta):
 			if jumpHeat > 1.0:
 				jumpHeat = 0.0
 				_heated_jump()
+			else:
+				jumpHeat = 0.0
 	
 		_movement(delta)
 	
@@ -60,6 +68,7 @@ func _physics_process(delta):
 func _movement(delta):
 	var direction = Input.get_axis("move_left", "move_right")
 	if direction:
+		jumpHeat = 0.0
 		if direction > 0:
 			$CharacterSprite2D.scale.x = startScale
 		elif direction < 0:
@@ -67,9 +76,10 @@ func _movement(delta):
 		velocity.x = direction * SPEED
 		if $AnimationPlayer.current_animation == "attack":
 			velocity.x /= 3
-		
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED*delta*10) + extraVelocity.x
+		velocity.x = move_toward(velocity.x, 0, SPEED*delta*10)
+		if velocity.x < 1.0 and velocity.x > -1.0:
+			velocity.x += extraVelocity.x
 
 func _primary_attack():
 	$AnimationPlayer.play("attack")
