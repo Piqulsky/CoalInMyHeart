@@ -269,6 +269,7 @@ position = Vector2(2008, 960)
 position = Vector2(1088, 672)
 
 [node name="Tips" type="Node2D" parent="."]
+visible = false
 
 [node name="Label" type="Label" parent="Tips"]
 offset_left = -136.0
@@ -594,6 +595,7 @@ position = Vector2(7776, -160)
 position = Vector2(8144, 512)
 
 [node name="Pipes" type="Node2D" parent="HeatSources"]
+visible = false
 
 [node name="Pipe" parent="HeatSources/Pipes" instance=ExtResource("9_lxlmt")]
 position = Vector2(-64, -160)
